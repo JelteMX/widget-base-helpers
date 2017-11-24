@@ -43,15 +43,18 @@ import defineWidget from 'widget-base-helpers/helpers/define-widget';
 
 ### Scoping
 
-If you use these methods inside your widget, it is best to add the as a method to your widget. This has to do with scoping.
+If you use these methods inside your widget, it is best to add the as a method to your widget. This has to do with scoping. Best way to do this is in the constructor
 
 ```js
 import { log, runCallback } from 'widget-base-helpers';
 ...
 
-    postCreate() {
+    constructor() {
         this.log = log.bind(this);
         this.runCallback = runCallback.bind(this);
+    },
+
+    postCreate() {
         this.log('postCreate');
 
         // Without binding you can use a method like this:
@@ -61,7 +64,7 @@ import { log, runCallback } from 'widget-base-helpers';
 
 ## Development
 
-These helpers are constantly in development. They combine best practices. If you have helpers that can be added, please add a PR.
+These helpers are constantly in development. They combine best practices. If you have helpers that can be added, please add a PR. If issues are spotted, a new version is created.
 
 ## License
 

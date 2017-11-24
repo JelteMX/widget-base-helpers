@@ -8,7 +8,11 @@
  * @param {...any} args
  */
 export function log(methodName, ...args) {
-    logger.debug(`${this.id}.${methodName}`, args.length ? args[ 0 ] : '');
+    if (this.id) {
+        logger.debug(`${this.id}.${methodName}`, args.length ? args[ 0 ] : '');
+    } else {
+        logger.debug(methodName, args.length ? args[ 0 ] : '');
+    }
 }
 
 /**

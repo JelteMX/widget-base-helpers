@@ -15,18 +15,15 @@ import templateMixin from 'dijit/_TemplatedMixin';
  * @returns
  */
 export default function defineWidget(id, template, obj, base, configParam) {
+    const widgetConfig = config || configParam;
     let packageName;
     let version;
     let widgetFolder;
 
-    if ('undefined' !== typeof config) {
-        packageName = config.packageName;
-        version = config.version;
-        widgetFolder = config.widgetFolder;
-    } else if ('undefined' !== typeof configParam) {
-        packageName = configParams.packageName;
-        version = configParams.version;
-        widgetFolder = configParams.widgetFolder;
+    if ('undefined' !== typeof widgetConfig) {
+        packageName = widgetConfig.packageName;
+        version = widgetConfig.version;
+        widgetFolder = widgetConfig.widgetFolder;
     } else {
         throw new Error('Widget needs a config! Please check your source code!');
     }

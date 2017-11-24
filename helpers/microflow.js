@@ -1,6 +1,6 @@
 /*eslint no-invalid-this: 0*/
 import lang from 'dojo/_base/lang';
-import { log } from '@/helpers';
+import log from './index';
 import Deferred from 'dojo/Deferred';
 
 export function execute(microflow, guid, cb, errCb) {
