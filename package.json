@@ -1,6 +1,6 @@
 {
   "name": "widget-base-helpers",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Helpers for Mendix Widgets written in ES6",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,17 @@
     "mendix",
     "helpers"
   ],
-  "author": "",
+  "author": {
+    "name": "Jelte Lagendijk",
+    "email": "jelte.lagendijk@mendix.com",
+    "url": "https://github.com/JelteMX"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JelteMX/widget-base-helpers"
+  },
+  "bugs": {
+    "url": "https://github.com/JelteMX/widget-base-helpers/issues"
+  },
   "license": "MIT"
 }

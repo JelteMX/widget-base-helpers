@@ -20,9 +20,13 @@ export default function defineWidget(id, template, obj, base, configParam) {
     let widgetFolder;
 
     if ('undefined' !== typeof config) {
-        let { packageName, version, widgetFolder } = config;
+        packageName = config.packageName;
+        version = config.version;
+        widgetFolder = config.widgetFolder;
     } else if ('undefined' !== typeof configParam) {
-        let { packageName, version, widgetFolder } = configParam;
+        packageName = configParams.packageName;
+        version = configParams.version;
+        widgetFolder = configParams.widgetFolder;
     } else {
         throw new Error('Widget needs a config! Please check your source code!');
     }
