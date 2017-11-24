@@ -1,0 +1,16 @@
+{
+  "name": "widget-base-helpers",
+  "version": "1.0.0",
+  "description": "Helpers for Mendix Widgets written in ES6",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "widget",
+    "mendix",
+    "helpers"
+  ],
+  "author": "",
+  "license": "MIT"
+}
