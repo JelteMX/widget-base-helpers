@@ -46,5 +46,10 @@ export default function defineWidget(id, template, obj, base, configParam) {
         }
     }
 
+    /* develblock:start */
+    // If the widget is built using Webpack, this block will be removed if you built it using 'yarn run build' or 'npm run build'. This is to make sure someone uses the minified production version.
+    console.warn(`${packageName}.${widgetFolder}.${id} is unminified. Please use the production version`);
+    /* develblock:end */
+
     return declare(`${packageName}.${widgetFolder}.${id}`, mixins, widgetObj);
 }
