@@ -13,7 +13,7 @@ export const getData = params => {
         deferred.reject(e);
     }
 
-    return deferred;
+    return deferred.promise;
 };
 
 export const fetchAttr = (obj, attr) => {
@@ -23,5 +23,5 @@ export const fetchAttr = (obj, attr) => {
     } catch (e) {
         deferred.reject(e);
     }
-    return deferred;
+    return deferred.promise;
 };

@@ -10,6 +10,7 @@ export function execute(microflow, guid, cb, errCb) {
             params: {
                 actionname: microflow,
                 applyto: 'selection',
+                guids: [],
             },
             callback: lang.hitch(this, res => {
                 if (cb && 'function' == typeof cb) {
@@ -47,5 +48,5 @@ export function executePromise(microflow, guid) {
 
     execute.call(this, microflow, guid, deferred.resolve, deferred.reject);
 
-    return deferred;
+    return deferred.promise;
 }
