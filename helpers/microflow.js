@@ -4,16 +4,16 @@ import {log} from './index';
 import Deferred from 'dojo/Deferred';
 
 export function execute(microflow, guid, cb, errCb) {
-    if (microflow && guid) {
+    if (microflow) {
         log.call(this, 'execute microflow', `mf: ${microflow}:${guid}`);
         const action = {
             params: {
+                actionname: microflow,
                 applyto: 'selection',
-                guids: [guid],
             },
-            callback: lang.hitch(this, objs => {
+            callback: lang.hitch(this, res => {
                 if (cb && 'function' == typeof cb) {
-                    cb(objs);
+                    cb(res);
                 }
             }),
             error: lang.hitch(this, error => {
@@ -25,6 +25,10 @@ export function execute(microflow, guid, cb, errCb) {
                 }
             }),
         };
+
+        if (guid) {
+            action.params.guids = [guid];
+        }
 
         if (!mx.version || mx.version && 7 > parseInt(mx.version.split(".")[ 0 ], 10)) {
             action.store = {
