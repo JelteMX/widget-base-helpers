@@ -1,6 +1,6 @@
 {
   "name": "widget-base-helpers",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Helpers for Mendix Widgets written in ES6",
   "main": "index.js",
   "scripts": {
