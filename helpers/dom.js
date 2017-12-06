@@ -15,3 +15,14 @@ export function findWidgetByName(widgetName) {
     const className = `mx-name-${widgetName}`.trim();
     return findWidgetByClass(className);
 }
+
+export function isDescendant(parentNode, child) {
+    let node = child.parentNode;
+    while (null !== node) {
+        if (node === parentNode) {
+            return true;
+        }
+        node = node.parentNode;
+    }
+    return false;
+}

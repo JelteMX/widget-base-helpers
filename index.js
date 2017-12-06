@@ -18,4 +18,5 @@ export {
 
     findWidgetByClass,
     findWidgetByName,
+    isDescendant
 }
