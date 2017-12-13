@@ -12,7 +12,7 @@ export function findWidgetByClass(className) {
 }
 
 export function findWidgetByName(widgetName) {
-    const className = `mx-name-${widgetName}`.trim();
+    const className = ('mx-name-' + widgetName).trim();
     return findWidgetByClass(className);
 }
 

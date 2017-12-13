@@ -31,7 +31,7 @@ export default function defineWidget(id, template, obj, base, configParam) {
     const widgetObj = obj;
 
     widgetObj._WIDGET_VERSION = version;
-    widgetObj._WIDGET_BASE_ID = `${packageName}.${widgetFolder}.${id}`;
+    widgetObj._WIDGET_BASE_ID = packageName + '.' + widgetFolder + '.' + id;
 
     const mixins = [];
     if ('undefined' !== typeof base && null !== base) {

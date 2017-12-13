@@ -5,7 +5,7 @@ import Deferred from 'dojo/Deferred';
 
 export function execute(microflow, guid, cb, errCb) {
     if (microflow) {
-        log.call(this, 'execute microflow', `mf: ${microflow}:${guid}`);
+        log.call(this, 'execute microflow', 'mf: ' + microflow + ':' + guid);
         const action = {
             params: {
                 actionname: microflow,
