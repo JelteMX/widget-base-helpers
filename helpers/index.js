@@ -25,7 +25,7 @@ export function log() {
  * @param {string} from
  */
 export function runCallback(cb, from) {
-    log.call(this, '_callback', from ? `from ${from}` : '');
+    log.call(this, '_callback', from ? 'from ' + from : '');
     if (cb && 'function' === typeof cb) {
         cb();
     }

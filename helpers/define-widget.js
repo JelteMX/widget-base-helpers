@@ -29,9 +29,10 @@ export default function defineWidget(id, template, obj, base, configParam) {
     }
 
     const widgetObj = obj;
+    const baseID = packageName + '.' + widgetFolder + '.' + id;
 
     widgetObj._WIDGET_VERSION = version;
-    widgetObj._WIDGET_BASE_ID = packageName + '.' + widgetFolder + '.' + id;
+    widgetObj._WIDGET_BASE_ID = baseID;
 
     const mixins = [];
     if ('undefined' !== typeof base && null !== base) {
@@ -47,5 +48,5 @@ export default function defineWidget(id, template, obj, base, configParam) {
         }
     }
 
-    return declare(`${packageName}.${widgetFolder}.${id}`, mixins, widgetObj);
+    return declare(baseID, mixins, widgetObj);
 }

@@ -21,8 +21,8 @@ export function execute(microflow, guid, cb, errCb) {
                 if (errCb && 'function' == typeof errCb) {
                     errCb(error);
                 } else {
-                    mx.ui.error(`Error executing microflow ${microflow} : ${error.message}`);
-                    console.error(this.id + "._execMf", error);
+                    mx.ui.error('Error executing microflow ' + microflow + ' : ' + error.message);
+                    console.error(this.id + '._execMf', error);
                 }
             }),
         };
@@ -31,7 +31,7 @@ export function execute(microflow, guid, cb, errCb) {
             action.params.guids = [guid];
         }
 
-        if (!mx.version || mx.version && 7 > parseInt(mx.version.split(".")[ 0 ], 10)) {
+        if (!mx.version || mx.version && 7 > parseInt(mx.version.split('.')[ 0 ], 10)) {
             action.store = {
                 caller: this.mxform,
             };
