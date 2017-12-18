@@ -1,5 +1,11 @@
 import registry from 'dijit/registry';
 import dojoArray from 'dojo/_base/array';
+import query from 'dojo/query';
+import 'dojo/NodeList-traverse';
+
+function _getClassNameByMxName(elementName) {
+    return ('mx-name-' + elementName).trim();
+}
 
 export function findWidgetByClass(className) {
     const findWidget = dojoArray.filter(
@@ -12,8 +18,16 @@ export function findWidgetByClass(className) {
 }
 
 export function findWidgetByName(widgetName) {
-    const className = ('mx-name-' + widgetName).trim();
-    return findWidgetByClass(className);
+    return findWidgetByClass(_getClassNameByMxName(widgetName));
+}
+
+export function findElementByName(elementName) {
+    return findElement('.' + _getClassNameByMxName(elementName));
+}
+
+export function findElement(cssSelector, parentNode) {
+    const target = 'undefined' !== typeof parentNode ? query(cssSelector, parentNode) : query(cssSelector);
+    return target && 1 === target.length ? target[ 0 ] : null;
 }
 
 export function isDescendant(parentNode, child) {
