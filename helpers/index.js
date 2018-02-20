@@ -1,4 +1,5 @@
 /*eslint no-invalid-this: 0*/
+import Deferred from 'dojo/Deferred';
 
 /**
  * Logs using the Mendix logger
@@ -30,3 +31,26 @@ export function runCallback(cb, from) {
         cb();
     }
 }
+
+export const getMendixVersion = () => {
+    const deferred = new Deferred();
+
+    if (!mx.version) {
+        deferred.resolve(null);
+    } else {
+        try {
+            const version = mx.version.split('.');
+            const versionObject = {
+                major: parseInt(version[ 0 ], 10),
+                minor: parseInt(version[ 1 ], 10),
+                path: parseInt(version[ 2 ], 10)
+            };
+            deferred.resolve(versionObject);
+        } catch (error) {
+            console.warn('getMendixVersion error:', error);
+            deferred.resolve(null);
+        }
+    }
+
+    return deferred.promise;
+};
