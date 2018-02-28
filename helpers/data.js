@@ -25,3 +25,18 @@ export const fetchAttr = (obj, attr) => {
     }
     return deferred.promise;
 };
+
+export const commitData = params => {
+    const deferred = new Deferred();
+    const commitParams = lang.mixin({
+        callback: deferred.resolve,
+        error: deferred.reject,
+    }, params);
+    try {
+        mx.data.commit(commitParams);
+    } catch (e) {
+        deferred.reject(e);
+    }
+
+    return deferred.promise;
+};

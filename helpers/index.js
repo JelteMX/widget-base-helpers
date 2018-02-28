@@ -43,7 +43,7 @@ export const getMendixVersion = () => {
             const versionObject = {
                 major: parseInt(version[ 0 ], 10),
                 minor: parseInt(version[ 1 ], 10),
-                path: parseInt(version[ 2 ], 10)
+                path: parseInt(version[ 2 ], 10),
             };
             deferred.resolve(versionObject);
         } catch (error) {

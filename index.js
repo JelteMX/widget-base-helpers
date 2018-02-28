@@ -1,5 +1,5 @@
 import defineWidget from './helpers/define-widget';
-import { getData, fetchAttr } from './helpers/data';
+import { getData, fetchAttr, commitData } from './helpers/data';
 import { log, runCallback, getMendixVersion } from './helpers';
 import { execute, executePromise } from './helpers/microflow';
 import { findWidgetByClass, findWidgetByName, isDescendant, findElementByName, findElement } from './helpers/dom';
@@ -9,6 +9,7 @@ export {
 
     getData,
     fetchAttr,
+    commitData,
 
     log,
     runCallback,
