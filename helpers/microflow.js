@@ -3,6 +3,15 @@ import lang from 'dojo/_base/lang';
 import {log} from './index';
 import Deferred from 'dojo/Deferred';
 
+/**
+ * Run a microflow
+ *
+ * @param {string} microflow Microflow name
+ * @param {string|null} guid GUID of the Mendix Object that is passed to the microflow
+ * @param {Function} [cb] callback function
+ * @param {Function} [errCb] error function
+ * @returns void
+ */
 export function execute(microflow, guid, cb, errCb) {
     if (microflow) {
         log.call(this, 'execute microflow', 'mf: ' + microflow + ':' + guid);
@@ -43,6 +52,13 @@ export function execute(microflow, guid, cb, errCb) {
     }
 }
 
+/**
+ * Run a microflow as a promise
+ *
+ * @param {string} microflow Microflow name
+ * @param {string} [guid] Guid of Mendix object that is passed to the microflow
+ * @returns Promise
+ */
 export function executePromise(microflow, guid) {
     const deferred = new Deferred();
 

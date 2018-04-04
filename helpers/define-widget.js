@@ -7,14 +7,14 @@ import templateMixin from 'dijit/_TemplatedMixin';
 /**
  * Defines a widget. Use this when you have multiple sub widgets. For a single widget this might be overkill
  *
- * @export
- * @param {string} id
- * @param {string} template
- * @param {{}}} obj
- * @param {any} base
- * @returns
+ * @param {string} id Widget id. This is a partial ID, the full ID has the package and widget folder in it as well
+ * @param {(string|null)} template Template used by the widget
+ * @param {Object} obj Object that extends the base
+ * @param {any} [base] Basis of the widget. When omitted, this will use the normal _widgetBase defined by Mendix
+ * @param {Object} [configParam] Optional configuration, will take the configuration from Webpack normally
+ * @returns {Function} Widget Constructor
  */
-export default function defineWidget(id, template, obj, base, configParam) {
+export function defineWidget(id, template, obj, base, configParam) {
     const widgetConfig = config || configParam;
     let packageName;
     let version;

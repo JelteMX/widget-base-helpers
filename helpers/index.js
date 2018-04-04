@@ -4,9 +4,9 @@ import Deferred from 'dojo/Deferred';
 /**
  * Logs using the Mendix logger
  *
- * @export
  * @param {string} methodName
  * @param {...any} args
+ * @returns void
  */
 export function log() {
     const methodName = arguments[ 0 ];
@@ -21,9 +21,9 @@ export function log() {
 /**
  * Runs a callback and logs the method where it comes from
  *
- * @export
- * @param {() => {}} cb
- * @param {string} from
+ * @param {Function} cb
+ * @param {string} [from] Log from where the callback was triggered
+ * @return void
  */
 export function runCallback(cb, from) {
     log.call(this, '_callback', from ? 'from ' + from : '');
@@ -32,6 +32,11 @@ export function runCallback(cb, from) {
     }
 }
 
+/**
+ * Returns a Promise that either contains null, or an object containing the major, minor & patch version of the Mendix runtime
+ *
+ * @returns Promise
+ */
 export const getMendixVersion = () => {
     const deferred = new Deferred();
 
