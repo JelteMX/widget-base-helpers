@@ -73,9 +73,12 @@ export function findElementByName(elementName) {
  * @param {string} cssSelector CSS Selector
  * @param {HTMLElement} [parentNode] (optional) parent node
  */
-export function findElement(cssSelector, parentNode) {
-    const target = 'undefined' !== typeof parentNode ? query(cssSelector, parentNode) : query(cssSelector);
-    return target && 1 === target.length ? target[ 0 ] : null;
+export function findElement(cssSelector, parentNode, strict = true) {
+    const target = 'undefined' !== typeof parentNode && null !== parentNode ? query(cssSelector, parentNode) : query(cssSelector);
+    if (strict) {
+        return target && 1 === target.length ? target[ 0 ] : null;
+    }
+    return target && 0 < target.length ? target[ 0 ] : null;
 }
 
 /**
