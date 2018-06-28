@@ -2,6 +2,13 @@ import declare from 'dojoBaseDeclare';
 import widgetBase from 'widgetBase';
 import templateMixin from 'dijit/_TemplatedMixin';
 
+const isArray = arg => {
+    if (Array.isArray) {
+        return Array.isArray(arg);
+    }
+    return '[object Array]' === Object.prototype.toString.call(arg);
+};
+
 // const { packageName, version, widgetFolder } = config;
 
 /**
@@ -36,7 +43,13 @@ export function defineWidget(id, template, obj, base, configParam) {
 
     const mixins = [];
     if ('undefined' !== typeof base && null !== base) {
-        mixins.push(base);
+        if (isArray(base)) {
+            base.forEach(function (mixin) {
+                mixins.push(mixin);
+            });
+        } else {
+            mixins.push(base);
+        }
     } else {
         mixins.push(widgetBase);
     }
