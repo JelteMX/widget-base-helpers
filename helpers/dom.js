@@ -72,13 +72,18 @@ export function findElementByName(elementName) {
  *
  * @param {string} cssSelector CSS Selector
  * @param {HTMLElement} [parentNode] (optional) parent node
+ * @param {boolean} strict Should the function return only if it can find one, or multiple
+ * @param {number} index Index of the element. It is always 0, but can be set to a number (needs strict = false!)
  */
-export function findElement(cssSelector, parentNode, strict = true) {
+export function findElement(cssSelector, parentNode, strict = true, index = 0) {
     const target = 'undefined' !== typeof parentNode && null !== parentNode ? query(cssSelector, parentNode) : query(cssSelector);
-    if (strict) {
-        return target && 1 === target.length ? target[ 0 ] : null;
+    if (!target || 0 === target.length || 0 > index || index > target.length - 1) {
+        return null;
     }
-    return target && 0 < target.length ? target[ 0 ] : null;
+    if (strict) {
+        return 1 === target.length ? target[ 0 ] : null;
+    }
+    return target[ index ];
 }
 
 /**
