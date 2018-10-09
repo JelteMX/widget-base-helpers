@@ -36,7 +36,7 @@ export function defineWidget(id, template, obj, base, configParam) {
     }
 
     const widgetObj = obj;
-    const baseID = packageName + '.' + widgetFolder + '.' + id;
+    const baseID = packageName + '.' + ('' !== widgetFolder ? widgetFolder + '.' : '') + id;
 
     widgetObj._WIDGET_VERSION = version;
     widgetObj._WIDGET_BASE_ID = baseID;
